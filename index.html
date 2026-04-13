@@ -24,17 +24,9 @@
     color: var(--ink);
     font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
     min-height: 100vh;
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 27px,
-        rgba(0,0,0,0.04) 27px,
-        rgba(0,0,0,0.04) 28px
-      );
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(0,0,0,0.04) 27px, rgba(0,0,0,0.04) 28px);
   }
 
-  /* HEADER */
   header {
     background: var(--ink);
     color: var(--paper);
@@ -72,29 +64,14 @@
     text-transform: uppercase;
     transition: all 0.15s;
   }
-  nav button:hover, nav button.active {
-    background: var(--accent);
-    border-color: var(--accent);
-  }
+  nav button:hover, nav button.active { background: var(--accent); border-color: var(--accent); }
 
-  /* VIEWS */
   .view { display: none; }
   .view.active { display: block; }
 
-  /* HOME / EDITOR */
-  .editor-wrap {
-    max-width: 820px;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
-  }
-
-  .editor-card {
-    background: white;
-    border: 2px solid var(--ink);
-    box-shadow: var(--shadow);
-    padding: 2rem;
-  }
-
+  /* EDITOR */
+  .editor-wrap { max-width: 820px; margin: 3rem auto; padding: 0 1.5rem; }
+  .editor-card { background: white; border: 2px solid var(--ink); box-shadow: var(--shadow); padding: 2rem; }
   .editor-card label {
     display: block;
     font-size: 0.68rem;
@@ -105,7 +82,6 @@
     margin-top: 1.4rem;
   }
   .editor-card label:first-of-type { margin-top: 0; }
-
   .editor-card input[type="text"],
   .editor-card select {
     width: 100%;
@@ -118,10 +94,7 @@
     outline: none;
     transition: border-color 0.15s;
   }
-  .editor-card input:focus, .editor-card select:focus,
-  .editor-card textarea:focus {
-    border-color: var(--ink);
-  }
+  .editor-card input:focus, .editor-card select:focus, .editor-card textarea:focus { border-color: var(--ink); }
 
   #paste-body {
     width: 100%;
@@ -146,11 +119,7 @@
     gap: 1rem;
     flex-wrap: wrap;
   }
-
-  .char-count {
-    font-size: 0.7rem;
-    color: var(--muted);
-  }
+  .char-count { font-size: 0.7rem; color: var(--muted); }
 
   .btn-publish {
     background: var(--ink);
@@ -172,13 +141,28 @@
     transform: translate(-1px, -1px);
   }
 
-  /* PASTE VIEW */
-  .paste-view-wrap {
-    max-width: 820px;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
+  /* FOLDER SELECT ROW */
+  .folder-select-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
   }
+  .folder-select-row select { flex: 1; }
+  .btn-new-folder {
+    background: var(--paper);
+    border: 1.5px solid var(--border);
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+    font-size: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    cursor: pointer;
+    color: var(--ink);
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .btn-new-folder:hover { border-color: var(--ink); background: var(--paper2); }
 
+  /* PASTE VIEW */
+  .paste-view-wrap { max-width: 820px; margin: 3rem auto; padding: 0 1.5rem; }
   .paste-meta {
     display: flex;
     align-items: flex-start;
@@ -187,7 +171,6 @@
     margin-bottom: 1.5rem;
     flex-wrap: wrap;
   }
-
   .paste-title-display {
     font-family: Georgia, 'Times New Roman', serif;
     font-size: 2rem;
@@ -195,14 +178,7 @@
     line-height: 1.15;
     max-width: 600px;
   }
-
-  .paste-info {
-    font-size: 0.7rem;
-    color: var(--muted);
-    margin-top: 0.5rem;
-    letter-spacing: 0.04em;
-  }
-
+  .paste-info { font-size: 0.7rem; color: var(--muted); margin-top: 0.5rem; letter-spacing: 0.04em; }
   .paste-actions { display: flex; gap: 0.5rem; flex-shrink: 0; flex-wrap: wrap; }
 
   .btn-sm {
@@ -231,7 +207,36 @@
     line-height: 1.85;
     white-space: pre-wrap;
     word-break: break-word;
+    position: relative;
   }
+
+  /* COPY ALL BUTTON */
+  .copy-all-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 1rem;
+    background: var(--paper2);
+    border: 2px solid var(--ink);
+    border-bottom: none;
+    box-shadow: var(--shadow);
+    position: relative;
+    top: 4px;
+  }
+  .copy-all-bar-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .btn-copy-all {
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.8rem;
+    border: 1.5px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-copy-all:hover { background: var(--accent); border-color: var(--accent); }
 
   .paste-tag {
     display: inline-block;
@@ -245,24 +250,32 @@
     margin-right: 0.35rem;
   }
 
-  /* LIST VIEW */
-  .list-wrap {
-    max-width: 820px;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
+  /* FOLDER BADGE */
+  .folder-badge {
+    display: inline-block;
+    background: #e0d8f0;
+    border: 1px solid #b9aed8;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    color: #4a3a7a;
+    margin-right: 0.35rem;
   }
 
+  /* LIST VIEW */
+  .list-wrap { max-width: 820px; margin: 3rem auto; padding: 0 1.5rem; }
   .list-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
   }
+  .list-heading { font-family: Georgia, 'Times New Roman', serif; font-size: 1.6rem; }
 
-  .list-heading {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.6rem;
-  }
+  .list-controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
 
   .search-bar {
     display: flex;
@@ -278,7 +291,7 @@
     font-size: 0.8rem;
     outline: none;
     background: transparent;
-    min-width: 200px;
+    min-width: 180px;
     color: var(--ink);
   }
   .search-bar button {
@@ -290,6 +303,84 @@
     font-size: 0.85rem;
   }
 
+  .folder-filter {
+    display: flex;
+    gap: 0;
+    border: 1.5px solid var(--ink);
+    overflow: hidden;
+    background: white;
+  }
+  .folder-filter select {
+    border: none;
+    padding: 0.5rem 0.8rem;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+    font-size: 0.78rem;
+    outline: none;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    min-width: 140px;
+  }
+
+  /* FOLDER SIDEBAR + LIST LAYOUT */
+  .list-layout { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .folder-sidebar {
+    width: 180px;
+    flex-shrink: 0;
+    background: white;
+    border: 1.5px solid var(--border);
+  }
+  .folder-sidebar-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.7rem 0.9rem 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .folder-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: background 0.12s;
+    border-bottom: 1px solid rgba(200,191,174,0.3);
+  }
+  .folder-item:hover { background: var(--paper); }
+  .folder-item.active { background: var(--ink); color: var(--paper); }
+  .folder-item-icon { font-size: 0.85rem; }
+  .folder-item-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .folder-item-count {
+    font-size: 0.62rem;
+    background: var(--tag-bg);
+    border-radius: 9px;
+    padding: 0.1rem 0.4rem;
+    color: var(--muted);
+  }
+  .folder-item.active .folder-item-count { background: rgba(255,255,255,0.2); color: var(--paper); }
+
+  .folder-actions-row {
+    padding: 0.6rem 0.9rem;
+    border-top: 1px solid var(--border);
+  }
+  .btn-new-folder-side {
+    width: 100%;
+    background: transparent;
+    border: 1.5px dashed var(--border);
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+    font-size: 0.68rem;
+    padding: 0.4rem;
+    cursor: pointer;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: all 0.15s;
+  }
+  .btn-new-folder-side:hover { border-color: var(--ink); color: var(--ink); }
+
+  .list-main { flex: 1; min-width: 0; }
   .paste-list { display: flex; flex-direction: column; gap: 1rem; }
 
   .paste-item {
@@ -303,18 +394,8 @@
     justify-content: space-between;
     gap: 1rem;
   }
-  .paste-item:hover {
-    border-color: var(--ink);
-    box-shadow: var(--shadow);
-    transform: translate(-2px, -2px);
-  }
-
-  .paste-item-title {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-  }
+  .paste-item:hover { border-color: var(--ink); box-shadow: var(--shadow); transform: translate(-2px, -2px); }
+  .paste-item-title { font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem; }
   .paste-item-preview {
     font-size: 0.78rem;
     color: var(--muted);
@@ -323,25 +404,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 480px;
+    max-width: 400px;
   }
-  .paste-item-date {
-    font-size: 0.65rem;
-    color: var(--muted);
-    white-space: nowrap;
-    letter-spacing: 0.04em;
-  }
+  .paste-item-date { font-size: 0.65rem; color: var(--muted); white-space: nowrap; letter-spacing: 0.04em; }
 
-  .empty-state {
-    text-align: center;
-    padding: 5rem 1rem;
-    color: var(--muted);
-  }
-  .empty-state h2 {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-  }
+  .empty-state { text-align: center; padding: 5rem 1rem; color: var(--muted); }
+  .empty-state h2 { font-family: Georgia, 'Times New Roman', serif; font-size: 1.4rem; margin-bottom: 0.5rem; }
   .empty-state p { font-size: 0.8rem; }
 
   /* TOAST */
@@ -363,7 +431,7 @@
   }
   .toast.show { transform: translateX(-50%) translateY(0); }
 
-  /* MODAL */
+  /* MODALS */
   .modal-overlay {
     display: none;
     position: fixed;
@@ -382,23 +450,25 @@
     max-width: 480px;
     width: 90%;
   }
-  .modal h3 {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-  .modal-url {
-    background: white;
-    border: 1.5px solid var(--border);
-    padding: 0.6rem 0.8rem;
-    font-size: 0.75rem;
-    word-break: break-all;
-    color: var(--muted);
-    margin-bottom: 1rem;
-  }
+  .modal h3 { font-family: Georgia, 'Times New Roman', serif; font-size: 1.2rem; margin-bottom: 1rem; }
+  .modal-url { background: white; border: 1.5px solid var(--border); padding: 0.6rem 0.8rem; font-size: 0.75rem; word-break: break-all; color: var(--muted); margin-bottom: 1rem; }
   .modal-actions { display: flex; gap: 0.5rem; justify-content: flex-end; }
+  .modal input[type="text"] {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1.5px solid var(--border);
+    background: white;
+    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
+    font-size: 0.9rem;
+    color: var(--ink);
+    outline: none;
+    margin-bottom: 1rem;
+    transition: border-color 0.15s;
+  }
+  .modal input:focus { border-color: var(--ink); }
+  .modal p { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; line-height: 1.5; }
 
-  /* FILE ATTACHMENTS */
+  /* FILES */
   .file-drop-zone {
     border: 2px dashed var(--border);
     background: var(--paper);
@@ -408,35 +478,12 @@
     transition: all 0.2s;
     position: relative;
   }
-  .file-drop-zone:hover, .file-drop-zone.drag-over {
-    border-color: var(--ink);
-    background: var(--paper2);
-  }
-  .file-drop-zone input[type="file"] {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-  }
-  .file-drop-label {
-    font-size: 0.75rem;
-    color: var(--muted);
-    pointer-events: none;
-  }
-  .file-drop-label span {
-    display: block;
-    font-size: 1.4rem;
-    margin-bottom: 0.3rem;
-  }
+  .file-drop-zone:hover, .file-drop-zone.drag-over { border-color: var(--ink); background: var(--paper2); }
+  .file-drop-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .file-drop-label { font-size: 0.75rem; color: var(--muted); pointer-events: none; }
+  .file-drop-label span { display: block; font-size: 1.4rem; margin-bottom: 0.3rem; }
 
-  .staged-files {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.7rem;
-  }
+  .staged-files { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.7rem; }
   .staged-file {
     display: flex;
     align-items: center;
@@ -449,101 +496,29 @@
   .staged-file-icon { font-size: 1rem; flex-shrink: 0; }
   .staged-file-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .staged-file-size { color: var(--muted); flex-shrink: 0; }
-  .staged-file-remove {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--accent);
-    font-size: 1rem;
-    line-height: 1;
-    flex-shrink: 0;
-    padding: 0;
-  }
+  .staged-file-remove { background: none; border: none; cursor: pointer; color: var(--accent); font-size: 1rem; line-height: 1; flex-shrink: 0; padding: 0; }
   .staged-file-remove:hover { color: var(--accent2); }
 
-  /* ATTACHMENT VIEW */
-  .attachments-section {
-    margin-top: 1.5rem;
-  }
-  .attachments-heading {
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.8rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .attachments-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 0.8rem;
-  }
-  .attachment-card {
-    border: 1.5px solid var(--border);
-    background: white;
-    overflow: hidden;
-    transition: all 0.15s;
-  }
+  /* ATTACHMENTS */
+  .attachments-section { margin-top: 1.5rem; }
+  .attachments-heading { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+  .attachments-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.8rem; }
+  .attachment-card { border: 1.5px solid var(--border); background: white; overflow: hidden; transition: all 0.15s; }
   .attachment-card:hover { border-color: var(--ink); box-shadow: 3px 3px 0 var(--border); }
-  .attachment-preview {
-    width: 100%;
-    height: 110px;
-    object-fit: cover;
-    display: block;
-    background: var(--paper2);
-  }
-  .attachment-file-icon {
-    width: 100%;
-    height: 110px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    background: var(--paper2);
-  }
-  .attachment-info {
-    padding: 0.5rem 0.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.4rem;
-  }
-  .attachment-name {
-    font-size: 0.68rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    flex: 1;
-  }
-  .attachment-download {
-    font-size: 0.7rem;
-    background: var(--ink);
-    color: var(--paper);
-    border: none;
-    padding: 0.2rem 0.45rem;
-    cursor: pointer;
-    flex-shrink: 0;
-<<<<<<< HEAD
-    font-family: 'Courier New', 'Monaco', 'Consolas', monospace;
-=======
-    font-family: 'IBM Plex Mono', monospace;
->>>>>>> 9870bbb54e1bb469cab8ed78c268a1b8c95cbdf5
-    text-decoration: none;
-  }
+  .attachment-preview { width: 100%; height: 110px; object-fit: cover; display: block; background: var(--paper2); }
+  .attachment-file-icon { width: 100%; height: 110px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; background: var(--paper2); }
+  .attachment-info { padding: 0.5rem 0.6rem; display: flex; align-items: center; justify-content: space-between; gap: 0.4rem; }
+  .attachment-name { font-size: 0.68rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+  .attachment-download { font-size: 0.7rem; background: var(--ink); color: var(--paper); border: none; padding: 0.2rem 0.45rem; cursor: pointer; flex-shrink: 0; font-family: 'Courier New', monospace; text-decoration: none; }
   .attachment-download:hover { background: var(--accent); }
 
-  .size-warning {
-    font-size: 0.68rem;
-    color: var(--accent);
-    margin-top: 0.5rem;
-    display: none;
-  }
+  .size-warning { font-size: 0.68rem; color: var(--accent); margin-top: 0.5rem; display: none; }
 
-  @media (max-width: 600px) {
+  @media (max-width: 640px) {
     .paste-title-display { font-size: 1.4rem; }
     .paste-body-display { padding: 1.2rem 1rem; }
-    .list-header { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    .list-layout { flex-direction: column; }
+    .folder-sidebar { width: 100%; }
     .paste-item-preview { max-width: 200px; }
   }
 </style>
@@ -579,6 +554,14 @@
       <div class="size-warning" id="size-warning">⚠ Large files may exceed browser storage limits (5 MB total recommended).</div>
       <div class="staged-files" id="staged-files"></div>
 
+      <label>Folder</label>
+      <div class="folder-select-row">
+        <select id="paste-folder">
+          <option value="">— no folder —</option>
+        </select>
+        <button class="btn-new-folder" onclick="openNewFolderModal()">+ New Folder</button>
+      </div>
+
       <label for="paste-tag">Category Tag</label>
       <select id="paste-tag">
         <option value="">— none —</option>
@@ -604,7 +587,7 @@
   <div class="paste-view-wrap">
     <div class="paste-meta">
       <div>
-        <div id="pv-tag"></div>
+        <div id="pv-badges"></div>
         <div class="paste-title-display" id="pv-title"></div>
         <div class="paste-info" id="pv-info"></div>
       </div>
@@ -615,8 +598,13 @@
         <button class="btn-sm danger" onclick="deletePaste()">✕ Delete</button>
       </div>
     </div>
+
+    <div class="copy-all-bar">
+      <span class="copy-all-bar-label">Content</span>
+      <button class="btn-copy-all" onclick="copyAll()" id="copy-all-btn">⎘ Copy All</button>
+    </div>
     <div class="paste-body-display" id="pv-body"></div>
-    <div class="attachments-section" id="pv-attachments"></div>
+    <div id="pv-attachments"></div>
   </div>
 </div>
 
@@ -625,12 +613,19 @@
   <div class="list-wrap">
     <div class="list-header">
       <h2 class="list-heading">All Pastes</h2>
-      <div class="search-bar">
-        <input type="text" id="search-input" placeholder="Search pastes…" oninput="renderList()">
-        <button onclick="renderList()">⌕</button>
+      <div class="list-controls">
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Search pastes…" oninput="renderList()">
+          <button onclick="renderList()">⌕</button>
+        </div>
       </div>
     </div>
-    <div class="paste-list" id="paste-list"></div>
+    <div class="list-layout">
+      <div class="folder-sidebar" id="folder-sidebar"></div>
+      <div class="list-main">
+        <div class="paste-list" id="paste-list"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -644,7 +639,32 @@
     </p>
     <div class="modal-actions">
       <button class="btn-sm" onclick="copyShareLink()">⎘ Copy Link</button>
-      <button class="btn-sm" onclick="closeModal()">Close</button>
+      <button class="btn-sm" onclick="closeModal('share-modal')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- NEW FOLDER MODAL -->
+<div class="modal-overlay" id="folder-modal">
+  <div class="modal">
+    <h3>Create New Folder</h3>
+    <p>Give your folder a name to organize your pastes.</p>
+    <input type="text" id="new-folder-name" placeholder="e.g. Work Notes, Projects, Ideas…" maxlength="40">
+    <div class="modal-actions">
+      <button class="btn-sm" onclick="createFolder()">✓ Create</button>
+      <button class="btn-sm" onclick="closeModal('folder-modal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE FOLDER MODAL -->
+<div class="modal-overlay" id="delete-folder-modal">
+  <div class="modal">
+    <h3>Delete Folder</h3>
+    <p id="delete-folder-msg"></p>
+    <div class="modal-actions">
+      <button class="btn-sm danger" onclick="confirmDeleteFolder()">✕ Delete Folder</button>
+      <button class="btn-sm" onclick="closeModal('delete-folder-modal')">Cancel</button>
     </div>
   </div>
 </div>
@@ -653,28 +673,163 @@
 <div class="toast" id="toast"></div>
 
 <script>
-  // ── STORAGE ──────────────────────────────────────────────
   const STORE_KEY = 'pastedrop_pastes';
+  const FOLDER_KEY = 'pastedrop_folders';
 
   function load() {
     try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
     catch { return {}; }
   }
   function save(db) {
-    try {
-      localStorage.setItem(STORE_KEY, JSON.stringify(db));
-      return true;
-    } catch(e) {
-      toast('⚠ Storage full! Remove some files or pastes.');
-      return false;
-    }
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(db)); return true; }
+    catch { toast('⚠ Storage full! Remove some files or pastes.'); return false; }
+  }
+  function loadFolders() {
+    try { return JSON.parse(localStorage.getItem(FOLDER_KEY)) || []; }
+    catch { return []; }
+  }
+  function saveFolders(folders) {
+    localStorage.setItem(FOLDER_KEY, JSON.stringify(folders));
   }
   function uid() {
     return Math.random().toString(36).slice(2, 8) + Math.random().toString(36).slice(2, 6);
   }
 
+  // ── FOLDERS ──────────────────────────────────────────────
+  let activeFolderFilter = null; // null = all, '' = uncategorized, 'folderId' = specific
+  let folderToDelete = null;
+
+  function openNewFolderModal() {
+    document.getElementById('new-folder-name').value = '';
+    document.getElementById('folder-modal').classList.add('open');
+    setTimeout(() => document.getElementById('new-folder-name').focus(), 100);
+  }
+
+  function createFolder() {
+    const name = document.getElementById('new-folder-name').value.trim();
+    if (!name) { toast('Please enter a folder name.'); return; }
+    const folders = loadFolders();
+    if (folders.find(f => f.name.toLowerCase() === name.toLowerCase())) {
+      toast('A folder with that name already exists.'); return;
+    }
+    const folder = { id: uid(), name };
+    folders.push(folder);
+    saveFolders(folders);
+    closeModal('folder-modal');
+    populateFolderSelects();
+    // Auto-select new folder in editor
+    const sel = document.getElementById('paste-folder');
+    if (sel) sel.value = folder.id;
+    toast(`Folder "${name}" created!`);
+    renderFolderSidebar();
+  }
+
+  function populateFolderSelects() {
+    const folders = loadFolders();
+    const sel = document.getElementById('paste-folder');
+    if (!sel) return;
+    const cur = sel.value;
+    sel.innerHTML = `<option value="">— no folder —</option>` +
+      folders.map(f => `<option value="${escHtml(f.id)}">${escHtml(f.name)}</option>`).join('');
+    if (cur) sel.value = cur;
+  }
+
+  function getFolderName(folderId) {
+    if (!folderId) return null;
+    const f = loadFolders().find(f => f.id === folderId);
+    return f ? f.name : null;
+  }
+
+  function renderFolderSidebar() {
+    const db = load();
+    const folders = loadFolders();
+    const pastes = Object.values(db);
+    const sidebar = document.getElementById('folder-sidebar');
+    if (!sidebar) return;
+
+    const allCount = pastes.length;
+    const uncatCount = pastes.filter(p => !p.folder).length;
+
+    const folderCounts = {};
+    folders.forEach(f => { folderCounts[f.id] = 0; });
+    pastes.forEach(p => { if (p.folder && folderCounts[p.folder] !== undefined) folderCounts[p.folder]++; });
+
+    const allActive = activeFolderFilter === null;
+    const uncatActive = activeFolderFilter === '';
+
+    sidebar.innerHTML = `
+      <div class="folder-sidebar-title">Folders</div>
+      <div class="folder-item ${allActive ? 'active' : ''}" onclick="setFolderFilter(null)">
+        <span class="folder-item-icon">📋</span>
+        <span class="folder-item-name">All pastes</span>
+        <span class="folder-item-count">${allCount}</span>
+      </div>
+      <div class="folder-item ${uncatActive ? 'active' : ''}" onclick="setFolderFilter('')">
+        <span class="folder-item-icon">📄</span>
+        <span class="folder-item-name">Unfiled</span>
+        <span class="folder-item-count">${uncatCount}</span>
+      </div>
+      ${folders.map(f => `
+        <div class="folder-item ${activeFolderFilter === f.id ? 'active' : ''}" onclick="setFolderFilter('${f.id}')">
+          <span class="folder-item-icon">📁</span>
+          <span class="folder-item-name" title="${escHtml(f.name)}">${escHtml(f.name)}</span>
+          <span class="folder-item-count">${folderCounts[f.id] || 0}</span>
+        </div>
+      `).join('')}
+      <div class="folder-actions-row">
+        <button class="btn-new-folder-side" onclick="openNewFolderModal()">+ New Folder</button>
+      </div>
+    `;
+
+    // Right-click / long-press on folder to delete
+    sidebar.querySelectorAll('.folder-item').forEach((el, i) => {
+      // i=0 = All, i=1 = Unfiled, i>=2 = real folders
+      if (i >= 2) {
+        const folderIdx = i - 2;
+        el.addEventListener('contextmenu', e => {
+          e.preventDefault();
+          promptDeleteFolder(folders[folderIdx]);
+        });
+      }
+    });
+  }
+
+  function setFolderFilter(id) {
+    activeFolderFilter = id;
+    renderFolderSidebar();
+    renderList();
+  }
+
+  function promptDeleteFolder(folder) {
+    folderToDelete = folder;
+    const db = load();
+    const count = Object.values(db).filter(p => p.folder === folder.id).length;
+    document.getElementById('delete-folder-msg').textContent =
+      `Delete the folder "${folder.name}"? ${count > 0 ? `The ${count} paste${count > 1 ? 's' : ''} inside will be moved to Unfiled.` : 'The folder is empty.'}`;
+    document.getElementById('delete-folder-modal').classList.add('open');
+  }
+
+  function confirmDeleteFolder() {
+    if (!folderToDelete) return;
+    const db = load();
+    // Move pastes to unfiled
+    Object.values(db).forEach(p => {
+      if (p.folder === folderToDelete.id) p.folder = '';
+    });
+    save(db);
+    const folders = loadFolders().filter(f => f.id !== folderToDelete.id);
+    saveFolders(folders);
+    if (activeFolderFilter === folderToDelete.id) activeFolderFilter = null;
+    folderToDelete = null;
+    closeModal('delete-folder-modal');
+    populateFolderSelects();
+    renderFolderSidebar();
+    renderList();
+    toast('Folder deleted. Pastes moved to Unfiled.');
+  }
+
   // ── FILE HANDLING ─────────────────────────────────────────
-  let stagedFiles = []; // [{name, size, type, data(base64)}]
+  let stagedFiles = [];
 
   function fileIcon(type) {
     if (type.startsWith('image/')) return '🖼';
@@ -695,7 +850,7 @@
   }
 
   function handleFiles(fileList) {
-    const MAX_FILE = 4 * 1024 * 1024; // 4MB per file
+    const MAX_FILE = 4 * 1024 * 1024;
     Array.from(fileList).forEach(file => {
       if (stagedFiles.find(f => f.name === file.name && f.size === file.size)) return;
       if (file.size > MAX_FILE) { toast(`"${file.name}" is too large (max 4 MB)`); return; }
@@ -706,21 +861,16 @@
       };
       reader.readAsDataURL(file);
     });
-    // reset so same file can be re-added after removal
     document.getElementById('file-input').value = '';
   }
 
-  function removeStagedFile(idx) {
-    stagedFiles.splice(idx, 1);
-    renderStagedFiles();
-  }
+  function removeStagedFile(idx) { stagedFiles.splice(idx, 1); renderStagedFiles(); }
 
   function renderStagedFiles() {
     const el = document.getElementById('staged-files');
     const warn = document.getElementById('size-warning');
     const totalSize = stagedFiles.reduce((s, f) => s + f.size, 0);
     warn.style.display = totalSize > 2 * 1024 * 1024 ? 'block' : 'none';
-
     if (!stagedFiles.length) { el.innerHTML = ''; return; }
     el.innerHTML = stagedFiles.map((f, i) => `
       <div class="staged-file">
@@ -732,15 +882,10 @@
     `).join('');
   }
 
-  // Drag & drop on the drop zone
   const dz = document.getElementById('drop-zone');
   dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag-over'); });
   dz.addEventListener('dragleave', () => dz.classList.remove('drag-over'));
-  dz.addEventListener('drop', e => {
-    e.preventDefault();
-    dz.classList.remove('drag-over');
-    handleFiles(e.dataTransfer.files);
-  });
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('drag-over'); handleFiles(e.dataTransfer.files); });
 
   // ── ROUTING ──────────────────────────────────────────────
   let currentPasteId = null;
@@ -756,11 +901,13 @@
       document.getElementById('view-paste').classList.add('active');
       window.location.hash = '#paste/' + pasteId;
     } else if (name === 'list') {
+      renderFolderSidebar();
       renderList();
       document.getElementById('view-list').classList.add('active');
       document.getElementById('nav-list').classList.add('active');
       window.location.hash = '#list';
     } else {
+      populateFolderSelects();
       if (editingId) {
         const db = load();
         const p = db[editingId];
@@ -768,6 +915,7 @@
           document.getElementById('paste-title').value = p.title;
           document.getElementById('paste-body').value = p.body;
           document.getElementById('paste-tag').value = p.tag || '';
+          document.getElementById('paste-folder').value = p.folder || '';
           stagedFiles = (p.files || []).map(f => ({...f}));
           renderStagedFiles();
           updateCount();
@@ -800,14 +948,14 @@
   // ── EDITOR ───────────────────────────────────────────────
   function updateCount() {
     const len = document.getElementById('paste-body').value.length;
-    document.getElementById('char-count').textContent =
-      len.toLocaleString() + ' character' + (len !== 1 ? 's' : '');
+    document.getElementById('char-count').textContent = len.toLocaleString() + ' character' + (len !== 1 ? 's' : '');
   }
 
   function clearEditor() {
     document.getElementById('paste-title').value = '';
     document.getElementById('paste-body').value = '';
     document.getElementById('paste-tag').value = '';
+    document.getElementById('paste-folder').value = '';
     stagedFiles = [];
     renderStagedFiles();
     updateCount();
@@ -827,12 +975,13 @@
       title: document.getElementById('paste-title').value.trim() || 'Untitled',
       body,
       tag: document.getElementById('paste-tag').value,
+      folder: document.getElementById('paste-folder').value,
       files: stagedFiles.map(f => ({ name: f.name, size: f.size, type: f.type, data: f.data })),
       createdAt: editingId ? (db[id]?.createdAt || now) : now,
       updatedAt: now
     };
 
-    if (!save(db)) return; // storage full
+    if (!save(db)) return;
 
     const wasEditing = !!editingId;
     editingId = null;
@@ -853,20 +1002,24 @@
     const p = db[id];
     if (!p) { toast('Paste not found.'); showView('list'); return; }
 
-    document.getElementById('pv-tag').innerHTML =
-      p.tag ? `<span class="paste-tag">${escHtml(p.tag)}</span>` : '';
+    const badges = [];
+    if (p.tag) badges.push(`<span class="paste-tag">${escHtml(p.tag)}</span>`);
+    if (p.folder) {
+      const fn = getFolderName(p.folder);
+      if (fn) badges.push(`<span class="folder-badge">📁 ${escHtml(fn)}</span>`);
+    }
+    document.getElementById('pv-badges').innerHTML = badges.join('');
     document.getElementById('pv-title').textContent = p.title;
     document.getElementById('pv-body').textContent = p.body;
 
     const created = new Date(p.createdAt).toLocaleString();
-    const updated = p.updatedAt !== p.createdAt
-      ? ` · edited ${new Date(p.updatedAt).toLocaleString()}` : '';
+    const updated = p.updatedAt !== p.createdAt ? ` · edited ${new Date(p.updatedAt).toLocaleString()}` : '';
     const fileCount = (p.files || []).length;
     document.getElementById('pv-info').textContent =
       `Created ${created}${updated} · ${p.body.length.toLocaleString()} chars` +
       (fileCount ? ` · ${fileCount} file${fileCount > 1 ? 's' : ''}` : '');
 
-    // Render attachments
+    // Attachments
     const attEl = document.getElementById('pv-attachments');
     const files = p.files || [];
     if (!files.length) { attEl.innerHTML = ''; return; }
@@ -875,19 +1028,46 @@
       <div class="attachments-section">
         <div class="attachments-heading">Attachments (${files.length})</div>
         <div class="attachments-grid">
-          ${files.map((f, i) => `
+          ${files.map(f => `
             <div class="attachment-card">
               ${f.type.startsWith('image/')
                 ? `<img class="attachment-preview" src="${f.data}" alt="${escHtml(f.name)}" loading="lazy">`
                 : `<div class="attachment-file-icon">${fileIcon(f.type)}</div>`}
               <div class="attachment-info">
                 <span class="attachment-name" title="${escHtml(f.name)}">${escHtml(f.name)}</span>
-                <a class="attachment-download" href="${f.data}" download="${escHtml(f.name)}" title="Download ${escHtml(f.name)}">↓</a>
+                <a class="attachment-download" href="${f.data}" download="${escHtml(f.name)}" title="Download">↓</a>
               </div>
             </div>
           `).join('')}
         </div>
       </div>`;
+  }
+
+  // ── COPY ALL ─────────────────────────────────────────────
+  function copyAll() {
+    const p = load()[currentPasteId];
+    if (!p) return;
+
+    const parts = [];
+    if (p.title && p.title !== 'Untitled') parts.push(`# ${p.title}`);
+    if (p.body) parts.push(p.body);
+    if ((p.files || []).length) {
+      parts.push(`\n[Attachments: ${p.files.map(f => f.name).join(', ')}]`);
+    }
+
+    const text = parts.join('\n\n');
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copy-all-btn');
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      btn.style.background = '#27ae60';
+      btn.style.borderColor = '#27ae60';
+      setTimeout(() => {
+        btn.textContent = orig;
+        btn.style.background = '';
+        btn.style.borderColor = '';
+      }, 1800);
+    });
   }
 
   function copyLink() {
@@ -900,10 +1080,7 @@
     navigator.clipboard.writeText(p.body).then(() => toast('Content copied!'));
   }
 
-  function editPaste() {
-    editingId = currentPasteId;
-    showView('home');
-  }
+  function editPaste() { editingId = currentPasteId; showView('home'); }
 
   function deletePaste() {
     if (!confirm('Delete this paste and all its attachments? This cannot be undone.')) return;
@@ -920,17 +1097,33 @@
     const query = (document.getElementById('search-input')?.value || '').toLowerCase();
     const list = document.getElementById('paste-list');
 
-    const pastes = Object.values(db)
-      .filter(p => !query ||
+    let pastes = Object.values(db);
+
+    // Folder filter
+    if (activeFolderFilter === null) {
+      // all
+    } else if (activeFolderFilter === '') {
+      pastes = pastes.filter(p => !p.folder);
+    } else {
+      pastes = pastes.filter(p => p.folder === activeFolderFilter);
+    }
+
+    // Search filter
+    if (query) {
+      pastes = pastes.filter(p =>
         p.title.toLowerCase().includes(query) ||
         p.body.toLowerCase().includes(query) ||
         (p.tag || '').toLowerCase().includes(query) ||
-        (p.files || []).some(f => f.name.toLowerCase().includes(query)))
-      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        (getFolderName(p.folder) || '').toLowerCase().includes(query) ||
+        (p.files || []).some(f => f.name.toLowerCase().includes(query))
+      );
+    }
+
+    pastes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     if (!pastes.length) {
       list.innerHTML = `<div class="empty-state">
-        <h2>${query ? 'No results found.' : 'No pastes yet.'}</h2>
+        <h2>${query ? 'No results found.' : 'No pastes here.'}</h2>
         <p>${query ? 'Try a different search term.' : 'Create your first paste using the + New Paste button.'}</p>
       </div>`;
       return;
@@ -938,10 +1131,12 @@
 
     list.innerHTML = pastes.map(p => {
       const fc = (p.files || []).length;
+      const fn = getFolderName(p.folder);
       return `
         <div class="paste-item" onclick="showView('paste','${p.id}')">
           <div style="overflow:hidden">
             ${p.tag ? `<span class="paste-tag">${escHtml(p.tag)}</span>` : ''}
+            ${fn ? `<span class="folder-badge">📁 ${escHtml(fn)}</span>` : ''}
             ${fc ? `<span class="paste-tag">📎 ${fc} file${fc>1?'s':''}</span>` : ''}
             <div class="paste-item-title">${escHtml(p.title)}</div>
             <div class="paste-item-preview">${escHtml((p.body || '(no text)').slice(0, 120))}</div>
@@ -957,26 +1152,29 @@
     document.getElementById('share-modal').classList.add('open');
   }
   function copyShareLink() {
-    navigator.clipboard.writeText(document.getElementById('share-url').textContent)
-      .then(() => toast('Link copied!'));
+    navigator.clipboard.writeText(document.getElementById('share-url').textContent).then(() => toast('Link copied!'));
   }
-  function closeModal() {
-    document.getElementById('share-modal').classList.remove('open');
+
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
   }
-  document.getElementById('share-modal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
+
+  // Close modals on overlay click
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('open');
+    });
+  });
+
+  // Enter key in new folder input
+  document.getElementById('new-folder-name').addEventListener('keydown', e => {
+    if (e.key === 'Enter') createFolder();
   });
 
   // ── HELPERS ──────────────────────────────────────────────
-  function pasteUrl(id) {
-    return window.location.href.split('#')[0] + '#paste/' + id;
-  }
-  function escHtml(str) {
-    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  }
-  function formatDate(iso) {
-    return new Date(iso).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-  }
+  function pasteUrl(id) { return window.location.href.split('#')[0] + '#paste/' + id; }
+  function escHtml(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function formatDate(iso) { return new Date(iso).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }); }
 
   let toastTimer;
   function toast(msg) {
